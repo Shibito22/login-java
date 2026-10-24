@@ -80,7 +80,10 @@ public class MainActivity extends AppCompatActivity {
         boolean isPasswordValid = inputPassword.equals(savedPassword);
 
         if (isIdentifierValid && isPasswordValid) {
-            Toast.makeText(this, "Login Successful! Welcome back, " + savedUsername + "!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();
+            passwordEditText.setText("");
+            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+            startActivity(intent);
         } else {
             Toast.makeText(this, "Invalid Email/Username or Password", Toast.LENGTH_SHORT).show();
         }
