@@ -15,6 +15,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText emailOrUsernameEditText, passwordEditText;
@@ -77,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         boolean isIdentifierValid = inputIdentifier.equalsIgnoreCase(savedEmail) || inputIdentifier.equalsIgnoreCase(savedUsername);
-        boolean isPasswordValid = inputPassword.equals(savedPassword);
+        boolean isPasswordValid = Objects.equals(inputPassword, savedPassword);
 
         if (isIdentifierValid && isPasswordValid) {
             Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();

@@ -14,6 +14,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Objects;
+
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText emailEditText, usernameEditText, passwordEditText, confirmPasswordEditText;
@@ -70,7 +72,7 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
 
-        if (!password.equals(confirmPassword)) {
+        if (!Objects.equals(password, confirmPassword)) {
             confirmPasswordEditText.setError("Passwords do not match");
             confirmPasswordEditText.requestFocus();
             return;
