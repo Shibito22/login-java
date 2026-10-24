@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,12 +19,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            // Add 24dp (which is roughly 60px depending on density, but let's just use fixed padding in the content)
-            // It's better to wrap the content in a ScrollView or just add padding dynamically
             float density = getResources().getDisplayMetrics().density;
             int padding24 = (int) (24 * density);
             v.setPadding(systemBars.left + padding24, systemBars.top + padding24, systemBars.right + padding24, systemBars.bottom + padding24);
             return insets;
         });
+
+        TextView signUpLinkText = findViewById(R.id.signUpLinkText);
+        if (signUpLinkText != null) {
+            signUpLinkText.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            });
+        }
     }
 }
